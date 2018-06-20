@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="gallery.css">
+	<link rel="stylesheet" href="popup.css">
+	<link rel="stylesheet" href="form.css">
+	<script src="script.js" defer></script>
+	<title>Document</title>
+</head>
+<body>
+	<div class="sheath">
+		<div class="left">
+					<div class="catalog-left">
+							<p class="albom-name">Машины</p>
+							<p class="description">Альбом о машинах</p>
+							<img src="img/1.jpg" alt="">
+							<img src="img/2.jpg" alt="">
+							<img src="img/3.jpg" alt="">
+							<img src="img/4.jpg" alt="">
+							<img src="img/3.jpg" alt="">
+							<img src="img/4.jpg" alt="">
+							<img src="img/2.jpg" alt="">
+							<img src="img/1.jpg" alt="">
+							<img src="img/3.jpg" alt="">
+							<img src="img/4.jpg" alt="">
+							<img src="img/3.jpg" alt="">
+							<img src="img/4.jpg" alt="">
+					</div>
+					<div class="catalog-left">
+							<p class="albom-name">Природа</p>
+							<p class="description">Альбом о Природа</p>
+							<img src="img/3.jpg" alt="">
+							<img src="img/4.jpg" alt="">
+							<img src="img/2.jpg" alt="">
+							<img src="img/1.jpg" alt="">
+					</div>	
+		</div>
+
+		<div class="center">
+			<div class="container">
+
+				<h1 class="heading">Image Gallery with CSS Grid <span>& Flexbox Fallback</span></h1>
+				<p class="catalog-description"></p>
+			
+				<div class="gallery"></div>
+			
+			</div>
+			<div class="gallery"></div>
+		</div>
+
+		<div class="rigth">
+				<div class="navigations-right" id="add-album">
+						<p>Добавить альбом</p>
+				</div>
+				<div class="navigations-right" id="delete-album">
+						<p>Удалить альбом</p>		
+				</div>
+				<div class="navigations-right" id="edit-album">
+						<p>Редактировать альбом</p>		
+				</div>
+				<div class="navigations-right" id="delete-foto">
+						<p>Удалить фото из альбома</p>		
+				</div>
+				<div class="navigations-right" id="add-foto">
+						<p>Добавить фото в альбом</p>		
+				</div>
+		</div>
+	</div>
+
+	
+	<div class="show">
+			<div class="overlay"></div>
+			<div class="img-show">
+				<span>X</span>
+				<img src="">
+			</div>
+	</div>
+
+	<div class="form-main open-close"  id="add-album-form">
+		<div id="form-div">
+
+				<p class="name">
+					<input name="name" type="text" class="validate[custom[onlyLetter],length[0,100]] feedback-input name" placeholder="Имя" id="dell-catalog-input-name" />
+				</p>
+				<p class="text">
+						<textarea name="text" class="validate[required,length[6,300]] feedback-input comment" id="dell-catalog-textarea-description" placeholder="Описание"></textarea>
+				</p>
+				
+				<div class="submit" >
+					<input type="button" value="Добавить альбом" id="button-blue"/>
+					<!-- <div class="ease"></div> -->
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="form-main open-close"  id="del-album-form">
+			<div id="form-div">
+					<p class="text">
+							<select name="language" class="validate[required,length[6,300]] feedback-input comment" id="select-form-dell-album" >
+									<option value="0" disabled selected>--- select album ---</option>
+							</select>
+					</p>
+				
+					
+					<div class="submit" >
+						<input type="button" value="Удалить альбом" id="button-blue"/>
+						<!-- <div class="ease"></div> -->
+					</div>
+				
+			</div>
+		</div>
+
+
+	
+	
+</body>
+</html>
