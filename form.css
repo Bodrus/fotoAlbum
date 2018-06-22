@@ -99,7 +99,7 @@ input:focus, textarea:focus {
 background-color:white;
 }
 
-#button-blue {
+#button-dell {
 	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 	float:left;
 	width: 100%;
@@ -117,7 +117,7 @@ background-color:white;
   font-weight:700;
 }
 
-#button-blue:hover {
+#button-dell:hover {
 	background-color: rgba(0,0,0,0);
 	color: #0493bd;
 }
@@ -126,6 +126,74 @@ background-color:white;
 	color: #3498db;
 }
 	
+#button-close {
+	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+	float:left;
+	width: 100%;
+	border: #fbfbfb solid 4px;
+	cursor:pointer;
+	background-color: #3498db;
+	color:white;
+	font-size:24px;
+	padding-top:22px;
+	padding-bottom:22px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
+
+#button-close:hover {
+	background-color: rgba(0,0,0,0);
+	color: #0493bd;
+}
+
+#button-add {
+	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+	float:left;
+	width: 100%;
+	border: #fbfbfb solid 4px;
+	cursor:pointer;
+	background-color: #3498db;
+	color:white;
+	font-size:24px;
+	padding-top:22px;
+	padding-bottom:22px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
+
+#button-add:hover {
+background-color: rgba(0,0,0,0);
+	color: #0493bd;
+}
+
+#add-button-close {
+	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+	float:left;
+	width: 100%;
+	border: #fbfbfb solid 4px;
+	cursor:pointer;
+	background-color: #3498db;
+	color:white;
+	font-size:24px;
+	padding-top:22px;
+	padding-bottom:22px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
+
+#add-button-close:hover {
+	background-color: rgba(0,0,0,0);
+	color: #0493bd;
+}
 /* .ease {
 	width: 0px;
 	height: 74px;

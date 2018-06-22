@@ -6,7 +6,8 @@
 	<link rel="stylesheet" href="gallery.css">
 	<link rel="stylesheet" href="popup.css">
 	<link rel="stylesheet" href="form.css">
-	<script src="script.js" defer></script>
+	<script src="script2.js"></script>
+	<script src="functions.js"></script>
 	<title>Document</title>
 </head>
 <body>
@@ -82,14 +83,18 @@
 		<div id="form-div">
 
 				<p class="name">
-					<input name="name" type="text" class="validate[custom[onlyLetter],length[0,100]] feedback-input name" placeholder="Имя" id="dell-catalog-input-name" />
+					<input name="name" type="text" class="validate[custom[onlyLetter],length[0,100]] feedback-input name" placeholder="Имя" id="add-catalog-input-name" />
 				</p>
 				<p class="text">
-						<textarea name="text" class="validate[required,length[6,300]] feedback-input comment" id="dell-catalog-textarea-description" placeholder="Описание"></textarea>
+						<textarea name="text" class="validate[required,length[6,300]] feedback-input comment" id="add-catalog-textarea-description" placeholder="Описание"></textarea>
 				</p>
 				
 				<div class="submit" >
-					<input type="button" value="Добавить альбом" id="button-blue"/>
+					<input type="button" value="Добавить альбом" id="button-add"/>
+					<!-- <div class="ease"></div> -->
+				</div>
+				<div class="submit" >
+					<input type="button" value="Закрыть" id="add-button-close"/>
 					<!-- <div class="ease"></div> -->
 				</div>
 			
@@ -102,13 +107,16 @@
 							<select name="language" class="validate[required,length[6,300]] feedback-input comment" id="select-form-dell-album" >
 									<option value="0" disabled selected>--- select album ---</option>
 							</select>
-					</p>
-				
-					
+					</p>	
 					<div class="submit" >
-						<input type="button" value="Удалить альбом" id="button-blue"/>
+						<input type="button" value="Удалить альбом" id="button-dell"/>
 						<!-- <div class="ease"></div> -->
 					</div>
+					<div class="submit" >
+						<input type="button" value="Закрыть" id="button-close"/>
+						<!-- <div class="ease"></div> -->
+					</div>
+
 				
 			</div>
 		</div>

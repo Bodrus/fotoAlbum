@@ -14,19 +14,38 @@ window.onload = () => {
 	const $dellBottomAlbumForm = $dellAlbomForm.querySelector('.submit');
 	const $selectFormDellAlbum = document.querySelector('#select-form-dell-album');
 	
+	
+	const listNameAlboms = [];
 
 	const greateNewOption = (name) => {
 		const newOption = document.createElement('option');
 		newOption.value = name;
 		newOption.textContent = name;
 		$selectFormDellAlbum.appendChild(newOption);
-};
+	};
 	
-	const listNameAlboms = new Set();
+	const deleteOption = (name) => {
+		const selected = $selectFormDellAlbum.querySelectorAll('option');
+		selected.forEach(el => {
+			if (el.value === name) {
+				console.log('Удаляем опцию')
+				console.log(name)
+				console.log(el.value)
+				$selectFormDellAlbum.removeChild(el);
+			}
+		})
+	};
+
+	const deleteInlistNameAlboms = (name) => {
+		console.log(listNameAlboms)
+		const pos = listNameAlboms.indexOf(name);
+		listNameAlboms.splice(pos, 1);
+		console.log(listNameAlboms)
+	}
+	
 	document.querySelectorAll('.albom-name').forEach(el => {
-		listNameAlboms.add(el['textContent']);
+		listNameAlboms.push(el['textContent']);
 		greateNewOption(el['textContent']);
-	
 	});
 	
 
@@ -91,34 +110,74 @@ window.onload = () => {
 	
 	
 	const addAlbum = () => {
-		document.querySelectorAll('.albom-name').forEach(el => listNameAlboms.add(el['textContent']));
+		
+		console.log(listNameAlboms)
 
 		const input = document.querySelector('#dell-catalog-input-name');
 		const textarea = document.querySelector('#dell-catalog-textarea-description');
 		
-		if (input.value && !listNameAlboms.has(input.value)) {
+		if (input.value && !listNameAlboms.includes(input.value)) {
 			const newAlbumList = greateNewAlbum(input.value, textarea.value);
-			greateNewOption(input.value);
 			$allAlbumList.appendChild(newAlbumList);
+			
+			listNameAlboms.push(input.value);
+			greateNewOption(input.value);
 
 
 			input.value = '';
 			textarea.value = '';
+			console.log(listNameAlboms)
 		}
 		// введите имя альбома!!!! или имена дублируются
 	};
 
 	const dellAlbom = () => {
-		$dellAlbomForm.querySelectorAll('option').forEach(el => {
+		console.log(listNameAlboms);
+		let nameOptionSelected;
+    
+		$selectFormDellAlbum.querySelectorAll('option').forEach(el => {
 			if (el.selected) {
-				$allAlbomsLeft.forEach(elem => {
-					if (elem.querySelector('.albom-name').textContent === el.value) {
-						 elem.remove();
-					}
-				})
+				nameOptionSelected = el.value;	
+			}
+		});
+
+		$allAlbomsLeft.forEach(el => {
+			
+			const catalogName = el.querySelector('.albom-name');
+			
+			if (catalogName.textContent === nameOptionSelected) {
+				console.log(el);
+				el.querySelector('.albom-name').remove();
+				deleteInlistNameAlboms(catalogName);
+		    deleteOption(catalogName);
 			}
 		})	
+		
+		
+		// $dellAlbomForm.querySelectorAll('option').forEach(el => {
+		// 	if (el.selected) {
+		// 		console.log('выбраный Option для удаления')
+		// 		const optionSelected = el;
+		// 		console.log(optionSelected.value);
+				
+		// 		$allAlbomsLeft.forEach(elem => {
+		// 			const name = elem.querySelector('.albom-name').textContent;
+		// 			if (name === optionSelected.value) {
+		// 				console.log("вибираем эллемент option");
+		// 		    console.log(name)
+		// 				 elem.remove();
+		// 				 deleteInlistNameAlboms(el.value);
+		// 				 deleteOption(el.value);
+		// 			}
+		// 		})
+		// 	}
+		// })	
 	};
+
+
+
+
+
 
 
 	
@@ -136,8 +195,6 @@ window.onload = () => {
 
 	$dellAlbumBottom.addEventListener('click', (() => {
 		$dellAlbomForm.classList.toggle('open-close');
-		
-
 	}));
 
 	$dellBottomAlbumForm.addEventListener('click', dellAlbom);
