@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="gallery.css">
 	<link rel="stylesheet" href="popup.css">
 	<link rel="stylesheet" href="form.css">
-	<script src="script2.js"></script>
+	<script src="script.js"></script>
 	<script src="functions.js"></script>
 	<title>Document</title>
 </head>
@@ -79,6 +79,7 @@
 			</div>
 	</div>
 
+	<!-- Форма Добавить альбом -->
 	<div class="form-main open-close"  id="add-album-form">
 		<div id="form-div">
 
@@ -100,11 +101,11 @@
 			
 		</div>
 	</div>
-
+ <!-- Форма Удалить альбом -->
 	<div class="form-main open-close"  id="del-album-form">
 			<div id="form-div">
 					<p class="text">
-							<select name="language" class="validate[required,length[6,300]] feedback-input comment" id="select-form-dell-album" >
+							<select name="dell-form-album" class="validate[required,length[6,300]] feedback-input comment" id="select-form-dell-album" >
 									<option value="0" disabled selected>--- select album ---</option>
 							</select>
 					</p>	
@@ -115,11 +116,41 @@
 					<div class="submit" >
 						<input type="button" value="Закрыть" id="button-close"/>
 						<!-- <div class="ease"></div> -->
-					</div>
-
-				
+					</div>	
 			</div>
+	</div>
+
+<!-- Редактировать альбом -->
+	<div class="form-main open-close"  id="edit-album-form">
+		<div id="form-div">
+
+				<p class="text">
+						<select name="edit-form-album" class="validate[required,length[6,300]] feedback-input comment" id="select-form-edit-album" >
+								<option value="0" disabled selected>--- select album ---</option>
+						</select>
+				</p>
+				<div class="submit" >
+						<input type="button" value="выбрать" id="button-edit-choose"/>
+						<!-- <div class="ease"></div> -->
+				</div>
+
+				<p class="name">
+					<input name="name" type="text" class="validate[custom[onlyLetter],length[0,100]] feedback-input name" placeholder="" id="edit-catalog-input-name" />
+				</p>
+				<p class="text">
+						<textarea name="text" class="validate[required,length[6,300]] feedback-input comment" id="edit-catalog-textarea-description" placeholder=""></textarea>
+				</p>
+				
+				<div class="submit" >
+					<input type="button" value="Сохранить и выйти" id="button-edit"/>
+					<!-- <div class="ease"></div> -->
+				</div>
+				<div class="submit" >
+					<input type="button" value="Отмена" id="edit-button-close"/>
+					<!-- <div class="ease"></div> -->
+				</div>
 		</div>
+  </div>
 
 
 	
