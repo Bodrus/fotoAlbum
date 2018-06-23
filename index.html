@@ -32,7 +32,7 @@
 					<div class="catalog-left">
 							<p class="albom-name">Природа</p>
 							<p class="description">Альбом о Природа</p>
-							<img src="img/3.jpg" alt="">
+							<img src="http://bipbap.ru/wp-content/uploads/2017/04/tmb_11647_2614.jpg" alt="">
 							<img src="img/4.jpg" alt="">
 							<img src="img/2.jpg" alt="">
 							<img src="img/1.jpg" alt="">
@@ -41,8 +41,9 @@
 
 		<div class="center">
 			<div class="container">
-
-				<h1 class="heading">Image Gallery with CSS Grid <span>& Flexbox Fallback</span></h1>
+				<div class="albumName">
+					<h1 class="heading" id="firstDescription">Image Gallery with CSS Grid <span>& Flexbox Fallback</span></h1>
+				</div>
 				<p class="catalog-description"></p>
 			
 				<div class="gallery"></div>
@@ -62,10 +63,10 @@
 						<p>Редактировать альбом</p>		
 				</div>
 				<div class="navigations-right" id="delete-foto">
-						<p>Удалить фото из альбома</p>		
+						<p>Удалить фото из текущего альбома</p>		
 				</div>
 				<div class="navigations-right" id="add-foto">
-						<p>Добавить фото в альбом</p>		
+						<p>Добавить фото в текущий альбом</p>		
 				</div>
 		</div>
 	</div>
@@ -150,10 +151,29 @@
 					<!-- <div class="ease"></div> -->
 				</div>
 		</div>
-  </div>
-
-
+	</div>
 	
+	<!-- форма добавлеия фотографии в альбом -->
+
+	<!-- http://bipbap.ru/wp-content/uploads/2017/04/tmb_11647_2614.jpg -->
+	<div class="form-main open-close"  id="add-foto-form">
+			<div id="form-div">
+	
+					<p class="name">
+						<input name="name" type="text" class="validate[custom[onlyLetter],length[0,100]] feedback-input name" placeholder="полный путь к фотографии" id="add-foto-input-name" />
+					</p>
+					
+					<div class="submit" >
+						<input type="button" value="Добавить фото" id="button-add-foto"/>
+						<!-- <div class="ease"></div> -->
+					</div>
+					<div class="submit" >
+						<input type="button" value="Отмена" id="button-close-form-foto"/>
+						<!-- <div class="ease"></div> -->
+					</div>
+				
+			</div>
+		</div>
 	
 </body>
 </html>
