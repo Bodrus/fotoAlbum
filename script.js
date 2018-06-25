@@ -1,9 +1,66 @@
 window.onload = () => {
 	
-	const $selectFormDellAlbum = document.querySelector('#select-form-dell-album'); // в форме(новом окне) выбираем родителя для OPTION dell
-	const $selectFormEditAlbum = document.querySelector('#select-form-edit-album'); // в форме(новом окне) выбираем родителя для OPTION edit
 	
-	const listNameAlboms = []; // список существующих альбомов
+	
+	
+const listNameAlboms = []; // список существующих альбомов
+
+
+											// УДАЛЕНИЕ ФОТОГРАФИИ ИЗ АЛЬБОМА //
+const checket = ({target}) => {
+	
+	target.parentElement.classList.toggle('checket');
+	target.parentElement.classList.toggle('foto');
+};
+const addFotoToDelFotoForm = () => {
+	const contenerDellFoto = document.querySelector('.contener-dell-foto');
+	document.querySelector('.center').querySelectorAll('img').forEach(el => {
+		const srcFoto = el.src;
+		const newDiv = document.createElement('div');
+		newDiv.classList.add('foto');
+		newDiv.addEventListener('click', checket);
+		newDiv.innerHTML = `<img src=${srcFoto} alt="">`;
+		contenerDellFoto.appendChild(newDiv);
+	})	
+};
+
+const dellFoto = () => {
+	const arrFotoSrcChecket = [];
+	document.querySelector('.center').classList.toggle('hiden');
+	document.querySelectorAll('.checket img').forEach(el => {
+		 arrFotoSrcChecket.push(el.src);
+	});
+
+	const nameAlbumChecket = document.querySelector('.heading').textContent;
+	
+
+	document.querySelectorAll('.albom-name').forEach(el => {
+		if (el.textContent === nameAlbumChecket) {
+			el.parentElement.querySelectorAll('img').forEach(el => {
+				if (arrFotoSrcChecket.includes(el.src)) {
+					el.remove();
+				}
+			})
+		}
+	});
+
+	const contenerFotoCentr = document.querySelector('.contener-dell-foto');
+	contenerFotoCentr.querySelectorAll('img').forEach(el => {
+		if (arrFotoSrcChecket.includes(el.src)) {
+			document.querySelector('.gallery-item').remove()	
+		}
+	});
+	
+	clearFormDellFoto();
+};
+
+const clearFormDellFoto = () => {
+	document.querySelector('#del-foto-form').classList.toggle('open-close');
+	document.querySelector('.center').classList.toggle('hiden');
+	const contenerDellFoto = document.querySelector('.contener-dell-foto');
+	contenerDellFoto.innerHTML = '';
+};
+											// END //
 
 												// ДОБАВЛЕНИЕ ФОТОГРАФИИ в АЛЬБОМ //
 	const clearFormAddFoto = () => {
@@ -24,14 +81,14 @@ window.onload = () => {
 		}
 		
 		const nameActivAlbum = document.querySelector('.heading').textContent;
-		console.log(nameActivAlbum);
+		
 		document.querySelectorAll('.albom-name').forEach(el => {
 			if (el.textContent === nameActivAlbum) {
 				const newImg = document.createElement('img');
 				newImg.src = url;
 				newImg.alt = "";
 				el.parentElement.appendChild(newImg);
-				
+
 				const newDiv = document.createElement('div');
 				newDiv.classList.add('gallery-item');
 				newDiv.innerHTML = `<img class="gallery-image" src="${url}" alt="">`;
@@ -53,22 +110,22 @@ window.onload = () => {
 		const newOption = document.createElement('option');
 		newOption.value = name;
 		newOption.textContent = name;
-		$selectFormDellAlbum.appendChild(newOption);
+		document.querySelector('#select-form-dell-album').appendChild(newOption);
 	};
 // Функция создания и добовления елемнта OPTION в родительский select edit.
 	const greateNewOptionEdit = (name) => {
 		const newOption = document.createElement('option');
 		newOption.value = name;
 		newOption.textContent = name;
-		$selectFormEditAlbum.appendChild(newOption);	
+		document.querySelector('#select-form-edit-album').appendChild(newOption);	
 	};
 	// Удалить OPTION из select DELL
 	const deleteOptionDell = (name) => {
-		const selected = $selectFormDellAlbum.querySelectorAll('option');
+		const selected = document.querySelector('#select-form-dell-album').querySelectorAll('option');
 		
 		selected.forEach(el => {
 			if (el.value === name) {
-				$selectFormDellAlbum.removeChild(el);
+				document.querySelector('#select-form-dell-album').removeChild(el);
 			}
 		})
 	};
@@ -81,7 +138,7 @@ window.onload = () => {
 			if (el.value === name) {
 				document.querySelector('#select-form-edit-album').removeChild(el);
 			}
-		})
+		});
 		 
 	};
 
@@ -98,7 +155,7 @@ window.onload = () => {
 		greateNewOptionEdit(el['textContent']); // Добовляем Имя Альбома в OPTION edit
 	});
 
-	console.log(listNameAlboms)
+	
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -109,7 +166,7 @@ window.onload = () => {
 	const deleteAlbum = () => {
 		let nameCheckOption;
 		// определяем выбранное имя альбома в форме для удаления и записываем его в переменную
-		$selectFormDellAlbum.querySelectorAll('option').forEach(el => {
+		document.querySelector('#select-form-dell-album').querySelectorAll('option').forEach(el => {
 			if (el.selected) {
 				nameCheckOption = el.value;
 			}
@@ -121,12 +178,16 @@ window.onload = () => {
 				document.querySelector('.left').removeChild(el);
 				deleteOptionDell(pText);
 				deleteInlistNameAlboms(pText);
-				deleteOptionEdit(pText);
-				
+				deleteOptionEdit(pText);	
 			}
-		})
+		});
+
+		if (document.querySelector('.heading').textContent === nameCheckOption) {
+			document.querySelector('.albumName').innerHTML = '<h1 class="heading" id="firstDescription">Учебный проект - фотогалерея. <br>Максим Бодрус</h1>';
+			document.querySelector('.gallery').innerHTML = '';
+		}
 	};
-	console.log(listNameAlboms);
+	
 
 	/////////////////////////////////////////////////////////////////////////// end
 
@@ -151,7 +212,7 @@ const addAlbum = () => {
 		return newDiv;
 	};
 
-	console.log(listNameAlboms)
+	
 
 		const input = document.querySelector('#add-catalog-input-name');
 		const textarea = document.querySelector('#add-catalog-textarea-description');
@@ -168,7 +229,10 @@ const addAlbum = () => {
 			input.value = '';
 			textarea.value = '';	
 		}
-		console.log(listNameAlboms)
+		document.querySelector('.heading').textContent = 'ТАКОЙ АЛЬБОМ УЖЕ СУЩЕСТВУЕТ!!';
+		document.querySelector('.heading').style.color = 'red';
+		return;
+		
 };
 /////////////  END  ///////////
 
@@ -186,13 +250,13 @@ const showBigImage = ({target}) => {
 	span.addEventListener('click', (() => show.style.display = 'none'));
 };
 
-const DisplayingListOfPhotos = (event) => {
+const DisplayingListOfPhotos = ({target}) => {
 	const $gallery = document.querySelector('.gallery');
 	const $catalogName = document.querySelector('.albumName');
 	const $description = document.querySelector('.catalog-description');
 	$gallery.innerHTML = '';
 
-	const $hisBlock = event.target.closest('.catalog-left');
+	const $hisBlock = target.closest('.catalog-left');
 	const textNameCatalog = $hisBlock.querySelector('p').textContent;
 	const textDescription = $hisBlock.querySelector('.description').textContent;
 
@@ -212,67 +276,79 @@ const DisplayingListOfPhotos = (event) => {
 //////////////  END   /////////////
 
 ////// Редактировать Альбом  /////////////
-///// Получаем текущие данные альбома /////
+///// Функция очистки формы /////
 const clearFormEdit = () => {
 	document.querySelector('#edit-catalog-input-name').value = '';
 	document.querySelector('#edit-catalog-textarea-description').value = '';
 };
-
+///// Получаем текущие данные альбома /////
 const getAlbumDetails = () => {
 	let nameCheckOption;
 
-	$selectFormEditAlbum.querySelectorAll('option').forEach(el => {
+	document.querySelector('#select-form-edit-album').querySelectorAll('option').forEach(el => {
 		if (el.selected) {
-			nameCheckOption = el.value;
+			nameCheckOption = el.value;		
 		}
 		clearFormEdit();
 	});
 	
 	document.querySelectorAll('.catalog-left').forEach(el => {
-		console.log(el)
+		
 		if (el.firstElementChild.textContent === nameCheckOption) {
-			console.log()
+			
 			const name = el.querySelector('.albom-name').textContent;
 			const description = el.querySelector('.description').textContent;
-
+			
 			document.querySelector('#edit-catalog-input-name').value = name;
-			document.querySelector('#edit-catalog-textarea-description').value = description;
+			if (!description) {
+				document.querySelector('#edit-catalog-textarea-description').value = 'нет описания';
+			} else {
+				document.querySelector('#edit-catalog-textarea-description').value = description;
+			}
 		}
-	})		
+	});		
 };
 
 ///////// Меняем на новые данные альбома /////////////
 const editAlbom = () => {
 	let nameCheckOption;
-		$selectFormEditAlbum.querySelectorAll('option').forEach(el => {
+		document.querySelector('#select-form-edit-album').querySelectorAll('option').forEach(el => {
 			 if (el.selected) {
 				 nameCheckOption = el.value;
 			 }
 	});
 	document.querySelectorAll('.catalog-left').forEach(el => {
+		if (listNameAlboms.includes(nameCheckOption)) {
+			document.querySelector('.heading').textContent = 'ТАКОЙ АЛЬБОМ УЖЕ СУЩЕСТВУЕТ!!';
+			document.querySelector('.heading').style.color = 'red';
+			return;
+		}
 		if (el.firstElementChild.textContent === nameCheckOption) {
+
 			const newName = document.querySelector('#edit-catalog-input-name').value 
 				? document.querySelector('#edit-catalog-input-name').value 
 				: 'Альбом без имени';
-
+			
 			const newDescription = document.querySelector('#edit-catalog-textarea-description').value;
 			el.firstElementChild.textContent = newName;
 			el.querySelector('.description').textContent = newDescription;
-			deleteInlistNameAlboms(nameCheckOption); // удаляем старое имя из масива имен фотоальбомов
-			listNameAlboms.push(newName); // добовляем новое имя в масив имен фотоальбомов
-			
-			greateNewOptionDell(newName); // создаем  новый OPTION Dell
-			greateNewOptionEdit(newName); // создаем новый OPTION Edit
-			
-			deleteOptionDell(nameCheckOption); // удаляем старый dell option из формы
-			deleteOptionEdit(nameCheckOption); // удаляем старый edit option из формы
+
+			if (newName !== nameCheckOption) {
+				deleteInlistNameAlboms(nameCheckOption); // удаляем старое имя из масива имен фотоальбомов
+				listNameAlboms.push(newName); // добовляем новое имя в масив имен фотоальбомов
+				greateNewOptionDell(newName); // создаем  новый OPTION Dell
+				greateNewOptionEdit(newName); // создаем новый OPTION Edit
+				deleteOptionDell(nameCheckOption); // удаляем старый dell option из формы
+				deleteOptionEdit(nameCheckOption); // удаляем старый edit option из формы
+				document.querySelector('.heading').textContent = newName;
+			}
+			document.querySelector('.catalog-description').textContent = newDescription;
 
 			clearFormEdit();
-
 		}
 	});
 
-	console.log(nameCheckOption);
+	
 
 	// закрываем форму для редактирования альбома
 	document.querySelector('#edit-album-form').classList.toggle('open-close');	
@@ -285,9 +361,12 @@ const editAlbom = () => {
 
 /////////////  Навешивание событий ////////////////
 
+
 	document.querySelectorAll('.catalog-left').forEach(el => {
 		el.addEventListener('click', DisplayingListOfPhotos);
 	});
+
+
 
   //  Открываем форму для удаления каталога
 	document.querySelector('#delete-album').addEventListener('click', (() => {
@@ -351,6 +430,31 @@ const editAlbom = () => {
 		document.querySelector('#add-foto-form').classList.toggle('open-close');
 	}));
 	document.querySelector('#button-close-form-foto').addEventListener('click', clearFormAddFoto);
+
+	// удалить фотографию - навесить событие на кнопку удаления фотографии
+	document.querySelector('#delete-foto').addEventListener('click', (() => {
+		if (document.querySelector('#firstDescription')) {
+			document.querySelector('.heading').textContent = '<-- ВЫБЕРЕТЕ НУЖНЫЙ АЛЬБОМ!!';
+			document.querySelector('.heading').style.color = 'red';
+			return;
+		}
+		document.querySelector('#del-foto-form').classList.toggle('open-close');
+		document.querySelector('.center').classList.toggle('hiden');
+		addFotoToDelFotoForm();
+	}));
+	//удалить фотографию - навесить событие на кнопку удалить в форме удаления
+	document.querySelector('#button-dell-foto').addEventListener('click', dellFoto);
+	document.querySelector('#button-dell-foto').addEventListener('click', clearFormDellFoto);
+
+	//document.querySelector('#button-dell-foto').addEventListener('click', DisplayingListOfPhotos);
+	
+
+	document.querySelector('#button-dell-foto').addEventListener('click', (() => {
+		document.querySelector('#del-foto-form').classList.toggle('open-close');	
+	}));
+
+	document.querySelector('#button-close-foto').addEventListener('click', clearFormDellFoto);
+
 
 
 };

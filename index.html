@@ -16,38 +16,30 @@
 					<div class="catalog-left">
 							<p class="albom-name">Машины</p>
 							<p class="description">Альбом о машинах</p>
-							<img src="img/1.jpg" alt="">
-							<img src="img/2.jpg" alt="">
-							<img src="img/3.jpg" alt="">
-							<img src="img/4.jpg" alt="">
-							<img src="img/3.jpg" alt="">
-							<img src="img/4.jpg" alt="">
-							<img src="img/2.jpg" alt="">
-							<img src="img/1.jpg" alt="">
-							<img src="img/3.jpg" alt="">
-							<img src="img/4.jpg" alt="">
-							<img src="img/3.jpg" alt="">
-							<img src="img/4.jpg" alt="">
+							<img src="http://bipbap.ru/wp-content/uploads/2017/09/1164905.jpg" alt="">
+							<img src="http://infokava.com/uploads/posts/2016-03/1458455268_2.jpg" alt="">
+							<img src="http://www.a777aa77.ru/lister/2018-lister-thunder.jpg" alt="">
+							<img src="http://thekievtimes.ua/wp-content/uploads/2015/11/345.jpg" alt="">
+							<img src="https://avatars.mds.yandex.net/get-pdb/236760/b6782e15-59ee-42fb-8cc5-6962ebb2660a/orig" alt="">
+							<img src="http://img0.liveinternet.ru/images/attach/c/3/75/277/75277850_WindowsLiveWriter_6b3c2b25bd96_B219_CRRSR_RSRSRyoRSR_RRSRyoRS_SRSR_20_2e398182c521402dbba68027fbd1fa1d.jpg" alt="">
 					</div>
 					<div class="catalog-left">
 							<p class="albom-name">Природа</p>
 							<p class="description">Альбом о Природа</p>
 							<img src="http://bipbap.ru/wp-content/uploads/2017/04/tmb_11647_2614.jpg" alt="">
-							<img src="img/4.jpg" alt="">
-							<img src="img/2.jpg" alt="">
-							<img src="img/1.jpg" alt="">
+							<img src="http://bipbap.ru/wp-content/uploads/2017/04/priroda_kartinki_foto_03.jpg" alt="">
+							<img src="http://bipbap.ru/wp-content/uploads/2017/04/4-2.jpg" alt="">
+							<img src="http://bipbap.ru/wp-content/uploads/2017/04/81074043_lovelylandscapes101.jpg" alt="">
 					</div>	
 		</div>
 
 		<div class="center">
 			<div class="container">
 				<div class="albumName">
-					<h1 class="heading" id="firstDescription">Image Gallery with CSS Grid <span>& Flexbox Fallback</span></h1>
+					<h1 class="heading" id="firstDescription">Учебный проект - фотогалерея. <br>Максим Бодрус</h1>
 				</div>
 				<p class="catalog-description"></p>
-			
 				<div class="gallery"></div>
-			
 			</div>
 			<div class="gallery"></div>
 		</div>
@@ -82,29 +74,28 @@
 
 	<!-- Форма Добавить альбом -->
 	<div class="form-main open-close"  id="add-album-form">
-		<div id="form-div">
-
+		<div class="form-div">
 				<p class="name">
 					<input name="name" type="text" class="validate[custom[onlyLetter],length[0,100]] feedback-input name" placeholder="Имя" id="add-catalog-input-name" />
 				</p>
+
 				<p class="text">
 						<textarea name="text" class="validate[required,length[6,300]] feedback-input comment" id="add-catalog-textarea-description" placeholder="Описание"></textarea>
 				</p>
 				
 				<div class="submit" >
 					<input type="button" value="Добавить альбом" id="button-add"/>
-					<!-- <div class="ease"></div> -->
 				</div>
+
 				<div class="submit" >
 					<input type="button" value="Закрыть" id="add-button-close"/>
-					<!-- <div class="ease"></div> -->
 				</div>
 			
 		</div>
 	</div>
  <!-- Форма Удалить альбом -->
 	<div class="form-main open-close"  id="del-album-form">
-			<div id="form-div">
+			<div class="form-div">
 					<p class="text">
 							<select name="dell-form-album" class="validate[required,length[6,300]] feedback-input comment" id="select-form-dell-album" >
 									<option value="0" disabled selected>--- select album ---</option>
@@ -112,27 +103,26 @@
 					</p>	
 					<div class="submit" >
 						<input type="button" value="Удалить альбом" id="button-dell"/>
-						<!-- <div class="ease"></div> -->
 					</div>
 					<div class="submit" >
 						<input type="button" value="Закрыть" id="button-close"/>
-						<!-- <div class="ease"></div> -->
+
 					</div>	
 			</div>
 	</div>
 
 <!-- Редактировать альбом -->
 	<div class="form-main open-close"  id="edit-album-form">
-		<div id="form-div">
+		<div class="form-div">
 
 				<p class="text">
 						<select name="edit-form-album" class="validate[required,length[6,300]] feedback-input comment" id="select-form-edit-album" >
 								<option value="0" disabled selected>--- select album ---</option>
 						</select>
 				</p>
+
 				<div class="submit" >
 						<input type="button" value="выбрать" id="button-edit-choose"/>
-						<!-- <div class="ease"></div> -->
 				</div>
 
 				<p class="name">
@@ -144,36 +134,47 @@
 				
 				<div class="submit" >
 					<input type="button" value="Сохранить и выйти" id="button-edit"/>
-					<!-- <div class="ease"></div> -->
 				</div>
+				
 				<div class="submit" >
 					<input type="button" value="Отмена" id="edit-button-close"/>
-					<!-- <div class="ease"></div> -->
 				</div>
 		</div>
 	</div>
 	
 	<!-- форма добавлеия фотографии в альбом -->
 
-	<!-- http://bipbap.ru/wp-content/uploads/2017/04/tmb_11647_2614.jpg -->
 	<div class="form-main open-close"  id="add-foto-form">
-			<div id="form-div">
-	
-					<p class="name">
-						<input name="name" type="text" class="validate[custom[onlyLetter],length[0,100]] feedback-input name" placeholder="полный путь к фотографии" id="add-foto-input-name" />
-					</p>
-					
-					<div class="submit" >
-						<input type="button" value="Добавить фото" id="button-add-foto"/>
-						<!-- <div class="ease"></div> -->
-					</div>
-					<div class="submit" >
-						<input type="button" value="Отмена" id="button-close-form-foto"/>
-						<!-- <div class="ease"></div> -->
-					</div>
-				
+		<div class="form-div">
+			<p class="name">
+				<input name="name" type="text" class="validate[custom[onlyLetter],length[0,100]] feedback-input name" placeholder="полный путь к фотографии" id="add-foto-input-name" />
+			</p>
+			<div class="submit" >
+				<input type="button" value="Добавить фото" id="button-add-foto"/>
 			</div>
+			<div class="submit" >
+				<input type="button" value="Отмена" id="button-close-form-foto"/>
+			</div>		
 		</div>
-	
+	</div>
+		 <!-- Форма удаления фотографии -->
+		 <div class="form-main open-close"  id="del-foto-form">
+				<div class="form-div">
+					<div class="contener-dell-foto">
+
+						<div class="foto">
+								<!-- <img src="img/4.jpg" alt=""> -->
+						</div>	
+						
+					</div>
+					<div class="submit" >
+						<input type="button" value="Удалить фото" id="button-dell-foto"/>
+					</div>
+					<div class="submit" >
+						<input type="button" value="Закрыть" id="button-close-foto"/>
+					</div>	
+				</div>
+		</div> 
+
 </body>
 </html>

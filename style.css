@@ -45,7 +45,15 @@ body {
 
 
 /* centr */
-
+.albumName {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  outline: none;
+  text-align: center;
+  letter-spacing: 1px;
+	box-shadow: 0.3rem 0.4rem 0.4rem rgba(15, 15, 15, 0.2);
+		
+}
 /* end centr */
 
 /* left */
@@ -66,8 +74,7 @@ body {
   transition: all 0.25s ease;
 	font-family: "Montserrat", Arial, sans-serif;
 	box-shadow: 0.3rem 0.4rem 0.4rem rgba(15, 15, 15, 0.2);
-	cursor: pointer;
-	
+	cursor: pointer;	
 }
 
 .catalog-left:hover, .navigations-right:hover {
@@ -128,6 +135,12 @@ button:active {
   color: white;
   background: #1abc9c;
 }
+
+.hiden {
+  visibility: hidden;
+}
+
+
 
 
 
