@@ -8,10 +8,10 @@ const listNameAlboms = []; // список существующих альбом
 
 											// УДАЛЕНИЕ ФОТОГРАФИИ ИЗ АЛЬБОМА //
 const checket = ({target}) => {
-	
 	target.parentElement.classList.toggle('checket');
 	target.parentElement.classList.toggle('foto');
 };
+
 const addFotoToDelFotoForm = () => {
 	const contenerDellFoto = document.querySelector('.contener-dell-foto');
 	document.querySelector('.center').querySelectorAll('img').forEach(el => {
@@ -28,6 +28,7 @@ const dellFoto = () => {
 	const arrFotoSrcChecket = [];
 	document.querySelector('.center').classList.toggle('hiden');
 	document.querySelectorAll('.checket img').forEach(el => {
+		console.log(el.src);
 		 arrFotoSrcChecket.push(el.src);
 	});
 
@@ -183,7 +184,7 @@ const clearFormDellFoto = () => {
 		});
 
 		if (document.querySelector('.heading').textContent === nameCheckOption) {
-			document.querySelector('.albumName').innerHTML = '<h1 class="heading" id="firstDescription">Учебный проект - фотогалерея. <br>Максим Бодрус</h1>';
+			document.querySelector('.albumName').innerHTML = '<p class="heading" id="firstDescription">Учебный проект - фотогалерея. <br>Максим Бодрус</p>';
 			document.querySelector('.gallery').innerHTML = '';
 		}
 	};
@@ -228,10 +229,11 @@ const addAlbum = () => {
 			listNameAlboms.push(name);
 			input.value = '';
 			textarea.value = '';	
+		} else {
+			document.querySelector('.heading').textContent = 'ТАКОЙ АЛЬБОМ УЖЕ СУЩЕСТВУЕТ!!';
+			document.querySelector('.heading').style.color = 'red';
+			return;
 		}
-		document.querySelector('.heading').textContent = 'ТАКОЙ АЛЬБОМ УЖЕ СУЩЕСТВУЕТ!!';
-		document.querySelector('.heading').style.color = 'red';
-		return;
 		
 };
 /////////////  END  ///////////
@@ -255,11 +257,11 @@ const DisplayingListOfPhotos = ({target}) => {
 	const $catalogName = document.querySelector('.albumName');
 	const $description = document.querySelector('.catalog-description');
 	$gallery.innerHTML = '';
-
+	
 	const $hisBlock = target.closest('.catalog-left');
 	const textNameCatalog = $hisBlock.querySelector('p').textContent;
 	const textDescription = $hisBlock.querySelector('.description').textContent;
-
+	
 	$catalogName.innerHTML = `<p class="heading">${textNameCatalog}<p>`;
 	$description.textContent = textDescription;
 
@@ -318,13 +320,7 @@ const editAlbom = () => {
 			 }
 	});
 	document.querySelectorAll('.catalog-left').forEach(el => {
-		if (listNameAlboms.includes(nameCheckOption)) {
-			document.querySelector('.heading').textContent = 'ТАКОЙ АЛЬБОМ УЖЕ СУЩЕСТВУЕТ!!';
-			document.querySelector('.heading').style.color = 'red';
-			return;
-		}
 		if (el.firstElementChild.textContent === nameCheckOption) {
-
 			const newName = document.querySelector('#edit-catalog-input-name').value 
 				? document.querySelector('#edit-catalog-input-name').value 
 				: 'Альбом без имени';
@@ -446,7 +442,6 @@ const editAlbom = () => {
 	document.querySelector('#button-dell-foto').addEventListener('click', dellFoto);
 	document.querySelector('#button-dell-foto').addEventListener('click', clearFormDellFoto);
 
-	//document.querySelector('#button-dell-foto').addEventListener('click', DisplayingListOfPhotos);
 	
 
 	document.querySelector('#button-dell-foto').addEventListener('click', (() => {

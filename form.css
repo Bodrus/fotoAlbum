@@ -372,7 +372,7 @@ background-color: rgba(0,0,0,0);
 	flex: 3;	
 }
 .checket {
-	flex: 2;
+	flex: 3;
 }
 
 .foto img {
@@ -384,7 +384,7 @@ background-color: rgba(0,0,0,0);
   border: 1px solid red;
 }
 .foto img:hover {
-	cursor:pointer;
+	cursor: pointer;
 	border: 1px solid red;
 }
 .contener-dell-foto {
