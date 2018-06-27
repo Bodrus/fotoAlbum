@@ -44,7 +44,12 @@ const dellFoto = () => {
 	const containerFotoCentr = document.querySelector('.container-dell-foto');
 	containerFotoCentr.querySelectorAll('img').forEach(el => {
 		if (arrFotoSrcChecked.includes(el.src)) {
-			document.querySelector('.gallery-item').remove()	
+			const srcDellFoto = el.src;
+			document.querySelectorAll('.gallery-item').forEach(el => {
+				if (el.querySelector('img').src === srcDellFoto) {
+					el.remove();
+				}
+			});
 		}
 	});
 	
