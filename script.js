@@ -2,6 +2,30 @@ window.onload = () => {
 	
 const listNameAlbums = []; // список существующих альбомов
 
+// Функция создания и добовления елемнта OPTION в родительский select dell.
+const сreateNewOptionDell = (name) => {
+	const newOption = document.createElement('option');
+	newOption.value = name;
+	newOption.textContent = name;
+	document.querySelector('#select-form-dell-album').appendChild(newOption);
+};
+// Функция создания и добовления елемнта OPTION в родительский select edit.
+const сreateNewOptionEdit = (name) => {
+	const newOption = document.createElement('option');
+	newOption.value = name;
+	newOption.textContent = name;
+	document.querySelector('#select-form-edit-album').appendChild(newOption);	
+};
+
+// Запускается при загрузке страници ///////////////////////////////////////////////////////////////
+document.querySelectorAll('.album-name').forEach(el => {  // перебор всех имен АЛЬБОМОВ
+	listNameAlbums.push(el['textContent']); // Добовление имени АЛЬБОМА в массив
+	сreateNewOptionDell(el['textContent']); // Добовляем Имя Альбома в OPTION dell
+	сreateNewOptionEdit(el['textContent']); // Добовляем Имя Альбома в OPTION edit
+});
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 											// УДАЛЕНИЕ ФОТОГРАФИИ ИЗ АЛЬБОМА //
 const checked = ({target}) => {
@@ -47,6 +71,7 @@ const dellFoto = () => {
 			const srcDellFoto = el.src;
 			document.querySelectorAll('.gallery-item').forEach(el => {
 				if (el.querySelector('img').src === srcDellFoto) {
+					console.log(el)
 					el.remove();
 				}
 			});
@@ -108,20 +133,7 @@ const clearFormDellFoto = () => {
 	
                        // УДАЛЕНИЕ  АЛЬБОМА /////
 
-	// Функция создания и добовления елемнта OPTION в родительский select dell.
-	const сreateNewOptionDell = (name) => {
-		const newOption = document.createElement('option');
-		newOption.value = name;
-		newOption.textContent = name;
-		document.querySelector('#select-form-dell-album').appendChild(newOption);
-	};
-// Функция создания и добовления елемнта OPTION в родительский select edit.
-	const сreateNewOptionEdit = (name) => {
-		const newOption = document.createElement('option');
-		newOption.value = name;
-		newOption.textContent = name;
-		document.querySelector('#select-form-edit-album').appendChild(newOption);	
-	};
+
 	// Удалить OPTION из select DELL
 	const deleteOptionDell = (name) => {
 		const selected = document.querySelector('#select-form-dell-album').querySelectorAll('option');
@@ -149,15 +161,6 @@ const clearFormDellFoto = () => {
 		const pos = listNameAlbums.indexOf(name);
 		listNameAlbums.splice(pos, 1);	
 	};
-	
-	// Запускается при загрузке страници ///////////////////////////////////////////////////////////////
-	document.querySelectorAll('.album-name').forEach(el => {  // перебор всех имен АЛЬБОМОВ
-		listNameAlbums.push(el['textContent']); // Добовление имени АЛЬБОМА в массив
-		сreateNewOptionDell(el['textContent']); // Добовляем Имя Альбома в OPTION dell
-		сreateNewOptionEdit(el['textContent']); // Добовляем Имя Альбома в OPTION edit
-	});
-
-	
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
