@@ -68,7 +68,7 @@ body {
   font-size: 2rem;
   font-weight: 500;
   cursor: pointer;
-  -webkit-transition: all 0.25s ease;
+  /* -webkit-transition: all 0.25s ease; */
   transition: all 0.25s ease;
 	font-family: "Montserrat", Arial, sans-serif;
 	box-shadow: 0.3rem 0.4rem 0.4rem rgba(15, 15, 15, 0.2);
@@ -83,25 +83,6 @@ body {
 .catalog-left img, .description {
 	display: none;
 }
-
-
-
-
-
-/* end left */
-
-
-/* right */
-
-
-
-/* end right */
-
-
-/* Pop-up window */
-
-
-/* end Pop-up window */
 
 .button {
   margin-top: 20px;
@@ -120,7 +101,7 @@ body {
   font-size: 12px;
   font-weight: bold;
   cursor: pointer;
-  -webkit-transition: all 0.25s ease;
+  /* -webkit-transition: all 0.25s ease; */
   transition: all 0.25s ease;
   font-family: 'Roboto', sans-serif;
 }
@@ -134,7 +115,7 @@ button:active {
   background: #1abc9c;
 }
 
-.hiden {
+.hidden {
   visibility: hidden;
 }
 
