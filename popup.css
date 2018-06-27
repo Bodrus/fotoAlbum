@@ -37,3 +37,10 @@
     top: 0;
     left: 0;
 }
+
+.img-show span {
+    border: 2px solid red;
+    font-size: 30px;
+    background: red;
+    color: wheat;
+}

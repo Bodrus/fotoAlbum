@@ -71,7 +71,6 @@ const dellFoto = () => {
 			const srcDellFoto = el.src;
 			document.querySelectorAll('.gallery-item').forEach(el => {
 				if (el.querySelector('img').src === srcDellFoto) {
-					console.log(el)
 					el.remove();
 				}
 			});
@@ -216,8 +215,6 @@ const addAlbum = () => {
 		newDiv.addEventListener('click', DisplayingListOfPhotos);
 		return newDiv;
 	};
-
-	
 
 		const input = document.querySelector('#add-catalog-input-name');
 		const textarea = document.querySelector('#add-catalog-textarea-description');
@@ -381,6 +378,9 @@ const editAlbum = () => {
 	
 	/// удаляем выбрынный альбом
 	document.querySelector('#button-dell').addEventListener('click', deleteAlbum);
+	document.querySelector('#button-dell').addEventListener('click', (() => {
+		document.querySelector('#del-album-form').classList.toggle('open-close');
+	}))
 	///
 
 
@@ -394,6 +394,9 @@ const editAlbum = () => {
 	}));
 	// навешиваем событие на добовление альбома
 	document.querySelector('#button-add').addEventListener('click', addAlbum);
+	document.querySelector('#button-add').addEventListener('click', (() => {
+		document.querySelector('#add-album-form').classList.toggle('open-close');
+	}));
 
 	// открываем форму для редактирования альбома
 	document.querySelector('#edit-album').addEventListener('click', (() => {
@@ -440,13 +443,18 @@ const editAlbum = () => {
 		document.querySelector('#del-foto-form').classList.toggle('open-close');
 		document.querySelector('.center').classList.toggle('hidden');
 		addFotoToDelFotoForm();
+		if (!document.querySelector('.center').classList.contains('hidden')) {
+			const containerDellFoto = document.querySelector('.container-dell-foto');
+	    containerDellFoto.innerHTML = '';
+		}
 	}));
 	//удалить фотографию - навесить событие на кнопку удалить в форме удаления
 	document.querySelector('#button-dell-foto').addEventListener('click', dellFoto);
 	document.querySelector('#button-dell-foto').addEventListener('click', clearFormDellFoto);
 
 	document.querySelector('#button-dell-foto').addEventListener('click', (() => {
-		document.querySelector('#del-foto-form').classList.toggle('open-close');	
+		document.querySelector('#del-foto-form').classList.toggle('open-close');
+		
 	}));
 
 	document.querySelector('#button-close-foto').addEventListener('click', clearFormDellFoto);
